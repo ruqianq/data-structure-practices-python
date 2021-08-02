@@ -13,17 +13,13 @@ from typing import List
 def matrix_reshape(mat: List[List[int]], r: int, c: int) -> List[List[int]]:
     m = len(mat)
     n = len(mat[0])
-    staging = []
-    result = []
+    result = [[]]
     if m * n == r * c and (m, n) != (r, c):
         for i in range(m):
             for j in range(n):
-                staging.append(mat[i][j])
-        new_mat_row = []
-        for s in staging:
-            new_mat_row.append(s)
-            if len(new_mat_row) == c:
-                result.append(new_mat_row)
-                new_mat_row = []
+                if len(result[-1]) < c:
+                    result[-1].append(mat[i][j])
+                else:
+                    result.append([mat[i][j]])
         return result
     return mat
