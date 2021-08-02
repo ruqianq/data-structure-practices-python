@@ -99,8 +99,3 @@ class BinarySearchTree:
 
         helper(self.root)
         return data
-
-
-
-
-

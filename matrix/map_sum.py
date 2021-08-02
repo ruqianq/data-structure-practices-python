@@ -25,7 +25,6 @@ class MapSum2:
         """
         self.head = None
 
-
     def insert(self, key, val):
         node = Node(key, val)
 
@@ -43,7 +42,6 @@ class MapSum2:
             self.head.node_value = val
             return self
         return self
-
 
     def sum(self, prefix):
         sum_of_val = 0
