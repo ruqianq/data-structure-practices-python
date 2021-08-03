@@ -1,5 +1,6 @@
 import unittest
 
+from matrix.city_line_increase import max_increase_keeping_skyline, max_increase_keeping_skyline_cln
 from matrix.matrix_reshape import matrix_reshape
 from matrix.flood_fill import flood_fill
 
@@ -26,9 +27,14 @@ class TestMatrixModule(unittest.TestCase):
         self.assertEqual(image, [[1, 2], [3, 4]])
 
     def test_flood_fill(self):
-        image = flood_fill([[0,0,0],[0,0,0]], 0, 0, 2)
-        self.assertEqual(image, [[2,2,2],[2,2,2]])
+        image = flood_fill([[0, 0, 0], [0, 0, 0]], 0, 0, 2)
+        self.assertEqual(image, [[2, 2, 2], [2, 2, 2]])
 
+    def test_max_increase_keeping_skyline(self):
+        self.assertEqual(max_increase_keeping_skyline([[3, 0, 8, 4], [2, 4, 5, 7], [9, 2, 6, 3], [0, 3, 1, 0]]), 35)
+
+    def test_max_increase_keeping_skyline_cln(self):
+        self.assertEqual(max_increase_keeping_skyline_cln([[3, 0, 8, 4], [2, 4, 5, 7], [9, 2, 6, 3], [0, 3, 1, 0]]), 35)
 
 if __name__ == '__main__':
     unittest.main()
