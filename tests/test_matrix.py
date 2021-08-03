@@ -36,5 +36,6 @@ class TestMatrixModule(unittest.TestCase):
     def test_max_increase_keeping_skyline_cln(self):
         self.assertEqual(max_increase_keeping_skyline_cln([[3, 0, 8, 4], [2, 4, 5, 7], [9, 2, 6, 3], [0, 3, 1, 0]]), 35)
 
+
 if __name__ == '__main__':
     unittest.main()
