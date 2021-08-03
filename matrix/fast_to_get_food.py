@@ -22,7 +22,7 @@ class Solution:
             for dirr in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
                 newX, newY = x + dirr[0], y + dirr[1]
                 if newX >= 0 and newX <= len(mat) - 1 and newY >= 0 and newY <= len(mat[0]) - 1 and (
-                newX, newY) not in visited:
+                        newX, newY) not in visited:
                     mat[newX][newY] = mat[x][y] + 1
                     visited.add((newX, newY))
                     q.append((newX, newY))
