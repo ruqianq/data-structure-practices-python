@@ -9,25 +9,26 @@
 
 # this is can sum problem to find out all the possible paths (sum) to get to target
 # create a grid with len(nums) * len(nums)
-
-def dp(nums, target, index, curr_sum):
-    memo = {}
-    if (index, curr_sum) in memo:
-        return memo[(index, curr_sum)]
-
-    if index < 0 and curr_sum == target:
-        return 1
-    if index < 0:
-        return 0
-
-    positive = dp(nums, target, index-1, curr_sum + nums[index])
-    negative = dp(nums, target, index-1, curr_sum + -nums[index])
-
-    memo[(index, curr_sum)] = positive + negative
-    return memo[(index, curr_sum)]
-
+# 0/1 Knapsack
 
 def find_target_sum_ways(nums, S):
     index = len(nums) - 1
     curr_sum = 0
+    memo = {}
+
+    def dp(nums, target, index, curr_sum):
+
+        if (index, curr_sum) in memo:
+            return memo[(index, curr_sum)]
+
+        if index < 0 and curr_sum == target:
+            return 1
+        if index < 0:
+            return 0
+
+        positive = dp(nums, target, index-1, curr_sum + nums[index])
+        negative = dp(nums, target, index-1, curr_sum + -nums[index])
+
+        memo[(index, curr_sum)] = positive + negative
+        return memo[(index, curr_sum)]
     return dp(nums, S, index, curr_sum)
