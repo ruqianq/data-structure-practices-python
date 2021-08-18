@@ -8,16 +8,14 @@ from .treenode import TreeNode
 
 
 def sorted_array_to_bst(nums: List[int]) -> Optional[TreeNode]:
-    if len(nums) == 1:
-        return TreeNode(nums[0])
-    cur = round(len(nums)/2) - 1
-    root = TreeNode(nums[cur])
-    for i in range(0, cur):
-        node = TreeNode(nums[i])
-        root.left = node
-    for i in range(cur, len(nums)):
-        node = TreeNode(nums[i])
-        root.right = node
+    if not nums:
+        return None
+
+    mid = len(nums) // 2
+
+    root = TreeNode(nums[mid])
+    root.left = sorted_array_to_bst(nums[:mid])
+    root.right = sorted_array_to_bst(nums[mid+1:])
 
     return root
 
