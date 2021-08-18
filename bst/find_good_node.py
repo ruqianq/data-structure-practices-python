@@ -1,7 +1,7 @@
 # Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X.
 #
 # Return the number of good nodes in the binary tree.
-from .node import Node
+from .treenode import TreeNode
 
 
 def helper(node, max_val) -> int:
@@ -16,5 +16,5 @@ def helper(node, max_val) -> int:
     return counter
 
 
-def count_good_nodes(root: Node) -> int:
+def count_good_nodes(root: TreeNode) -> int:
     return 1 + helper(root.left, root.value) + helper(root.right, root.value)

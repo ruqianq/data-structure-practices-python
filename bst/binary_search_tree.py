@@ -1,4 +1,4 @@
-from node import Node
+from treenode import TreeNode
 
 
 class BinarySearchTree:
@@ -7,7 +7,7 @@ class BinarySearchTree:
 
     def insert(self, value):
         if not self.root:
-            self.root = Node(value=value)
+            self.root = TreeNode(value=value)
         cur = self.root
         while cur.left and cur.right:
             if value > cur.value:
@@ -16,9 +16,9 @@ class BinarySearchTree:
                 cur = cur.left
 
         if value > cur.value:
-            cur.right = Node(value)
+            cur.right = TreeNode(value)
         else:
-            cur.left = Node(value)
+            cur.left = TreeNode(value)
         return self
 
     def find(self, value):
