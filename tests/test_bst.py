@@ -2,7 +2,7 @@ import unittest
 
 from bst.convert_sorted_array_to_bst import sorted_array_to_bst
 from bst.find_good_node import count_good_nodes
-from bst.is_balanced import get_height
+from bst.is_balanced import get_height, is_balanced
 from bst.is_same_tree import is_same_tree
 from bst.is_symmetric import is_symmetric
 from bst.treenode import TreeNode
@@ -50,6 +50,24 @@ class TestBST(unittest.TestCase):
         root1.left = TreeNode(2)
         root1.right = TreeNode(3)
         self.assertEqual(get_height(root1), 2)
+
+    def test_is_balanced(self):
+        root1 = TreeNode(3)
+        root1.left = TreeNode(9)
+        root1.right = TreeNode(20)
+        root1.right.left = TreeNode(15)
+        root1.right.right = TreeNode(7)
+        self.assertTrue(is_balanced(root1))
+
+    def test_is_balanced_1(self):
+        root1 = TreeNode(1)
+        root1.left = TreeNode(2)
+        root1.right = TreeNode(2)
+        root1.left.left = TreeNode(3)
+        root1.left.right = TreeNode(3)
+        root1.left.left.left = TreeNode(4)
+        root1.left.left.right = TreeNode(4)
+        self.assertFalse(is_balanced(root1))
 
 
 if __name__ == '__main__':

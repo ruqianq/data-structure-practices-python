@@ -9,22 +9,16 @@ from bst.treenode import TreeNode
 
 
 def get_height(node: TreeNode) -> int:
-    left_height = 1
-    right_height = 1
     if not node:
         return 0
-    left_height += get_height(node.left)
-    right_height += get_height(node.right)
-
-    height = max(left_height, right_height)
+    height = max(get_height(node.left), get_height(node.right)) + 1
     return height
 
 
-def is_balanced(self, root: Optional[TreeNode]) -> bool:
-    if not root.left or not root.right:
+def is_balanced(root: Optional[TreeNode]) -> bool:
+    if not root:
         return True
-    if not root.left and root.right:
-        return False
-    if root.left and not root.right:
-        return False
-    return
+
+    left_sub_tree_height = get_height(root.left)
+    right_sub_tree_height = get_height(root.right)
+    return abs(left_sub_tree_height - right_sub_tree_height) <= 1 and is_balanced(root.right) and is_balanced(root.left)
