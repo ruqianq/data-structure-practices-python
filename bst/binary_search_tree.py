@@ -1,4 +1,5 @@
-from treenode import TreeNode
+from .treenode import TreeNode
+from collections import deque
 
 
 class BinarySearchTree:
@@ -8,6 +9,7 @@ class BinarySearchTree:
     def insert(self, value):
         if not self.root:
             self.root = TreeNode(value=value)
+            return self
         cur = self.root
         while cur.left and cur.right:
             if value > cur.value:
@@ -41,12 +43,12 @@ class BinarySearchTree:
 
     def bfs(self):
         data = []
-        queue = []
+        queue = deque()
         node = self.root
         queue.append(node)
 
         while len(queue) > 0:
-            node = queue.pop(0)
+            node = queue.popleft()
             data.append(node.value)
             if node.left:
                 queue.append(node.left)
