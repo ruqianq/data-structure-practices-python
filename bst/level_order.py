@@ -7,17 +7,13 @@ from bst.treenode import TreeNode
 
 
 def level_order(root: Optional[TreeNode]) -> List[List[int]]:
-    if not root: return []
-    queue, res = deque([root]), []
-
-    while len(queue) > 0:
-        cur_level, size = [], len(queue)
-        for i in range(size):
-            node = queue.popleft()
-            if node.left:
-                queue.append(node.left)
-            if node.right:
-                queue.append(node.right)
-            cur_level.append(node.val)
-        res.append(cur_level)
-    return res
+    if not root:
+        return []
+    ans, level = [], [root]
+    while level:
+        ans.append([node.val for node in level])
+        temp = []
+        for node in level:
+            temp.extend([node.left, node.right])
+        level = [leaf for leaf in temp if leaf]
+    return ans
