@@ -29,7 +29,7 @@ class BinarySearchTree:
 
         cur = self.root
         found = False
-        while cur and found is True:
+        while cur and found is False:
             if value > cur.value:
                 cur = cur.right
             elif value < cur.value:
