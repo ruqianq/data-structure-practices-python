@@ -6,7 +6,16 @@ from bst.is_balanced import get_height, is_balanced
 from bst.is_same_tree import is_same_tree
 from bst.is_symmetric import is_symmetric
 from bst.path_sum import has_path_sum
+from bst.tree_path import binary_tree_paths
 from bst.treenode import TreeNode
+
+root1 = TreeNode(1)
+root1.left = TreeNode(2)
+root1.right = TreeNode(2)
+root1.left.left = TreeNode(3)
+root1.left.right = TreeNode(3)
+root1.left.left.left = TreeNode(4)
+root1.left.left.right = TreeNode(4)
 
 
 class TestBST(unittest.TestCase):
@@ -35,50 +44,43 @@ class TestBST(unittest.TestCase):
         self.assertEqual(sorted_array_to_bst([0]).value, TreeNode(0).value)
 
     def test_is_same_tree(self):
-        root1 = TreeNode(1)
-        root1.left = TreeNode(2)
-        root2 = TreeNode(1)
-        root2.right = TreeNode(2)
-        self.assertFalse(is_same_tree(root1, root2))
+        root5 = TreeNode(1)
+        root5.left = TreeNode(2)
+        root6 = TreeNode(1)
+        root6.right = TreeNode(2)
+        self.assertFalse(is_same_tree(root5, root6))
 
     def test_is_symmetric(self):
-        root1 = TreeNode(1)
-        root1.left = TreeNode(2)
-        self.assertFalse(is_symmetric(root1))
+        root4 = TreeNode(1)
+        root4.left = TreeNode(2)
+        self.assertFalse(is_symmetric(root4))
 
     def test_get_height(self):
-        root1 = TreeNode(1)
-        root1.left = TreeNode(2)
-        root1.right = TreeNode(3)
-        self.assertEqual(get_height(root1), 2)
+        root3 = TreeNode(1)
+        root3.left = TreeNode(2)
+        root3.right = TreeNode(3)
+        self.assertEqual(get_height(root3), 2)
 
     def test_is_balanced(self):
-        root1 = TreeNode(3)
-        root1.left = TreeNode(9)
-        root1.right = TreeNode(20)
-        root1.right.left = TreeNode(15)
-        root1.right.right = TreeNode(7)
-        self.assertTrue(is_balanced(root1))
+        root2 = TreeNode(3)
+        root2.left = TreeNode(9)
+        root2.right = TreeNode(20)
+        root2.right.left = TreeNode(15)
+        root2.right.right = TreeNode(7)
+        self.assertTrue(is_balanced(root2))
 
     def test_is_balanced_1(self):
-        root1 = TreeNode(1)
-        root1.left = TreeNode(2)
-        root1.right = TreeNode(2)
-        root1.left.left = TreeNode(3)
-        root1.left.right = TreeNode(3)
-        root1.left.left.left = TreeNode(4)
-        root1.left.left.right = TreeNode(4)
         self.assertFalse(is_balanced(root1))
 
     def test_has_path_sum(self):
-        root1 = TreeNode(1)
-        root1.left = TreeNode(2)
-        root1.right = TreeNode(2)
-        root1.left.left = TreeNode(3)
-        root1.left.right = TreeNode(3)
-        root1.left.left.left = TreeNode(4)
-        root1.left.left.right = TreeNode(4)
         self.assertTrue(has_path_sum(root1, 3))
+
+    def test_binary_tree_paths(self):
+        root0 = TreeNode(1)
+        root0.left = TreeNode(2)
+        root0.left.right = TreeNode(5)
+        root0.right = TreeNode(3)
+        self.assertEqual(binary_tree_paths(root0), ['1->2->5', '1->3'])
 
 
 if __name__ == '__main__':
