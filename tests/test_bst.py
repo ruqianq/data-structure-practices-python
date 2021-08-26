@@ -6,6 +6,7 @@ from bst.is_balanced import get_height, is_balanced
 from bst.is_same_tree import is_same_tree
 from bst.is_symmetric import is_symmetric
 from bst.path_sum import has_path_sum
+from bst.sum_path_binary import sum_root_to_leaf
 from bst.tree_path import binary_tree_paths
 from bst.treenode import TreeNode
 
@@ -81,6 +82,16 @@ class TestBST(unittest.TestCase):
         root0.left.right = TreeNode(5)
         root0.right = TreeNode(3)
         self.assertEqual(binary_tree_paths(root0), ['1->2->5', '1->3'])
+
+    def test_sum_root_to_leaf(self):
+        root0 = TreeNode(1)
+        root0.left = TreeNode(0)
+        root0.left.left = TreeNode(0)
+        root0.left.right = TreeNode(1)
+        root0.right = TreeNode(1)
+        root0.right.left = TreeNode(0)
+        root0.right.right = TreeNode(1)
+        self.assertEqual(sum_root_to_leaf(root0), 22)
 
 
 if __name__ == '__main__':
