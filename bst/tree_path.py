@@ -6,16 +6,16 @@ from typing import Optional, List
 from bst.treenode import TreeNode
 
 
-def dfs(self, node: TreeNode, path, paths):
+def dfs(node: TreeNode, path, paths):
     path += str(node.value)
     if not node.left and not node.right:
         paths.append(path)
 
     if node.left:
-        self.dfs(node.left, path + '->', paths)
+        dfs(node.left, path + '->', paths)
 
     if node.right:
-        self.dfs(node.right, path + '->', paths)
+        dfs(node.right, path + '->', paths)
 
 
 def binary_tree_paths(root: Optional[TreeNode]) -> List[str]:
