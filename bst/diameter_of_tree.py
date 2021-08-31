@@ -8,18 +8,15 @@ from typing import Optional
 from bst.treenode import TreeNode
 
 
-def get_height(node: TreeNode):
-    if not node:
-        return 0
-    return 1 + max(get_height(node.left), get_height(node.right))
-
-
 def diameter_of_binary_tree(root: Optional[TreeNode]) -> int:
-    if not root:
-        return 0
-    left_height = get_height(root.left)
-    right_height = get_height(root.right)
+    ans = 0
 
-    left_dia = diameter_of_binary_tree(root.left)
-    right_dia = diameter_of_binary_tree(root.right)
-    return max(left_height + right_height + 1, max(left_dia, right_dia))
+    def depth(p):
+        nonlocal ans
+        if not p: return 0
+        left, right = depth(p.left), depth(p.right)
+        ans = max(ans, left + right)
+        return 1 + max(left, right)
+
+    depth(root)
+    return ans
