@@ -3,19 +3,23 @@
 # The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
 #
 # The length of a path between two nodes is represented by the number of edges between them.
-from typing import Optional, List
+from typing import Optional
 
 from bst.treenode import TreeNode
 
 
+def get_height(node: TreeNode):
+    if not node:
+        return 0
+    return 1 + max(get_height(node.left), get_height(node.right))
+
+
 def diameter_of_binary_tree(root: Optional[TreeNode]) -> int:
+    if not root:
+        return 0
+    left_height = get_height(root.left)
+    right_height = get_height(root.right)
 
-    return 0
-
-
-def dsf_post(node: TreeNode, count):
-    if node.left:
-        dsf_post(node.left, count)
-    if node.right:
-        dsf_post(node.right, count)
-
+    left_dia = diameter_of_binary_tree(root.left)
+    right_dia = diameter_of_binary_tree(root.right)
+    return max(left_height + right_height + 1, max(left_dia, right_dia))
