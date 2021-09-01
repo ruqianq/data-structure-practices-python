@@ -6,6 +6,7 @@ from typing import List
 
 
 def search_insert(nums: List[int], target: int) -> int:
+    # When even, return the upper mid
     mid = len(nums) // 2
     found = False
     if target == nums[mid]:
@@ -34,3 +35,4 @@ def search_insert(nums: List[int], target: int) -> int:
             return mid + 1
         else:
             return 0
+
