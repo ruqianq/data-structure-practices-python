@@ -1,7 +1,7 @@
 import unittest
 
 from bst.convert_sorted_array_to_bst import sorted_array_to_bst
-from bst.diameter_of_tree import diameter_of_binary_tree_2
+from bst.diameter_of_tree import diameter_of_binary_tree_2, diameter_of_binary_tree
 from bst.find_good_node import count_good_nodes
 from bst.is_balanced import is_balanced
 from bst.get_height import get_height
@@ -96,7 +96,10 @@ class TestBST(unittest.TestCase):
         self.assertEqual(sum_root_to_leaf(root0), 22)
 
     def test_diameter_of_binary_tree_2(self):
-        self.assertEqual(diameter_of_binary_tree_2(root1), 5)
+        self.assertEqual(diameter_of_binary_tree_2(root1), 4)
+
+    def test_diameter_of_binary_tree(self):
+        self.assertEqual(diameter_of_binary_tree(root1), 4)
 
 
 if __name__ == '__main__':

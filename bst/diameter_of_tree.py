@@ -35,4 +35,4 @@ def diameter_of_binary_tree_2(root: Optional[TreeNode]) -> int:
     left_dia = diameter_of_binary_tree_2(root.left)
     right_dia = diameter_of_binary_tree_2(root.right)
 
-    return max(left_height + right_height + 1, max(left_dia, right_dia))
+    return max(left_height + right_height, max(left_dia, right_dia))
