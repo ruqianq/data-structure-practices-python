@@ -5,6 +5,7 @@
 # The length of a path between two nodes is represented by the number of edges between them.
 from typing import Optional
 
+from bst.get_height import get_height
 from bst.treenode import TreeNode
 
 
@@ -20,3 +21,18 @@ def diameter_of_binary_tree(root: Optional[TreeNode]) -> int:
 
     depth(root)
     return ans
+
+
+# Time consuming one:
+
+def diameter_of_binary_tree_2(root: Optional[TreeNode]) -> int:
+    if not root:
+        return 0
+    left_height = get_height(root.left)
+    right_height = get_height(root.right)
+
+    # if the path not go through root:
+    left_dia = diameter_of_binary_tree_2(root.left)
+    right_dia = diameter_of_binary_tree_2(root.right)
+
+    return max(left_height + right_height + 1, max(left_dia, right_dia))

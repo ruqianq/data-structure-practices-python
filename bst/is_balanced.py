@@ -5,14 +5,8 @@
 # a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
 from typing import Optional
 
+from bst.get_height import get_height
 from bst.treenode import TreeNode
-
-
-def get_height(node: TreeNode) -> int:
-    if not node:
-        return 0
-    height = max(get_height(node.left), get_height(node.right)) + 1
-    return height
 
 
 def is_balanced(root: Optional[TreeNode]) -> bool:

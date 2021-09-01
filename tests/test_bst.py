@@ -1,8 +1,10 @@
 import unittest
 
 from bst.convert_sorted_array_to_bst import sorted_array_to_bst
+from bst.diameter_of_tree import diameter_of_binary_tree_2
 from bst.find_good_node import count_good_nodes
-from bst.is_balanced import get_height, is_balanced
+from bst.is_balanced import is_balanced
+from bst.get_height import get_height
 from bst.is_same_tree import is_same_tree
 from bst.is_symmetric import is_symmetric
 from bst.path_sum import has_path_sum
@@ -92,6 +94,9 @@ class TestBST(unittest.TestCase):
         root0.right.left = TreeNode(0)
         root0.right.right = TreeNode(1)
         self.assertEqual(sum_root_to_leaf(root0), 22)
+
+    def test_diameter_of_binary_tree_2(self):
+        self.assertEqual(diameter_of_binary_tree_2(root1), 5)
 
 
 if __name__ == '__main__':
