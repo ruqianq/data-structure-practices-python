@@ -4,35 +4,20 @@
 # You must write an algorithm with O(log n) runtime complexity.
 from typing import List
 
+from binary_search.basic import get_mid_lower
+
 
 def search_insert(nums: List[int], target: int) -> int:
-    # When even, return the upper mid
-    mid = len(nums) // 2
-    found = False
-    if target == nums[mid]:
-        return mid
-    elif target > nums[mid]:
+    lo, hi = 0, len(nums)
 
-        while found is False and mid < len(nums) - 1:
-            mid += 1
-            if target == nums[mid]:
-                return mid
-            if target < nums[mid]:
-                found = True
-        if found is True:
+    while lo < hi:
+        mid = get_mid_lower(lo, hi)
+        if target == nums[mid]:
             return mid
+        elif target > nums[mid]:
+            lo = mid + 1
         else:
-            return len(nums)
+            hi = mid
 
-    else:
-        while found is False and mid >= 0:
-            mid -= 1
-            if target == nums[mid]:
-                return mid
-            if target > nums[mid]:
-                found = True
-        if found is True:
-            return mid + 1
-        else:
-            return 0
+    return lo
 
