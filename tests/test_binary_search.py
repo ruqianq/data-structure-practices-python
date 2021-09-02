@@ -1,5 +1,6 @@
 import unittest
 
+from binary_search.arrange_coins import calculate_sum, arrange_coins
 from binary_search.basic import get_mid_lower, get_mid_upper, binary_search
 from binary_search.search_insert import search_insert
 
@@ -19,6 +20,12 @@ class TestBinarySearch(unittest.TestCase):
 
     def test_binary_search(self):
         self.assertEqual(binary_search([1, 3, 5, 6], 6), 3)
+
+    def test_calculate_sum(self):
+        self.assertEqual(calculate_sum(4), 10)
+
+    def test_arrange_coins(self):
+        self.assertEqual(arrange_coins(8), 3)
 
 
 if __name__ == '__main__':
