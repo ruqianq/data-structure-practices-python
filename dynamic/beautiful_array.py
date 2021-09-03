@@ -7,7 +7,7 @@
 from typing import List
 
 
-def beautifulArray(n: int) -> List[int]:
+def beautiful_array(n: int) -> List[int]:
     result = [1]
     while len(result) < n:
         result = [i * 2 - 1 for i in result] + [i * 2 for i in result]

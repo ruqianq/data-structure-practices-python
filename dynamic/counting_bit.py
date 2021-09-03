@@ -5,7 +5,7 @@
 from typing import List
 
 
-def countBits(n: int) -> List[int]:
+def count_bits(n: int) -> List[int]:
     ans = [0, 1]
     while len(ans) <= n:
         for num in ans[:]:

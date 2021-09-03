@@ -1,7 +1,7 @@
 import unittest
 
 from dynamic.can_sum import find_target_sum_ways
-from dynamic.counting_bit import countBits
+from dynamic.counting_bit import count_bits
 
 
 class DynamicTest(unittest.TestCase):
@@ -10,7 +10,7 @@ class DynamicTest(unittest.TestCase):
         self.assertEqual(result, 5)
 
     def test_countBits(self):
-        result = countBits(5)
+        result = count_bits(5)
         self.assertEqual(result, [0, 1, 1, 2, 1, 2])
 
 
