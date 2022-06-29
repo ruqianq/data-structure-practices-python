@@ -3,7 +3,7 @@
 # A height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.
 #
 from typing import List, Optional
-from .treenode import TreeNode
+from .tree_node import TreeNode
 
 
 def sorted_array_to_bst(nums: List[int]) -> Optional[TreeNode]:

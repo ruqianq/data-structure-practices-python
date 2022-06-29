@@ -3,7 +3,7 @@
 
 from typing import Optional, List
 
-from bst.treenode import TreeNode
+from bst.tree_node import TreeNode
 
 
 def level_order(root: Optional[TreeNode]) -> List[List[int]]:

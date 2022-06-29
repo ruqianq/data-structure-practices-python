@@ -5,7 +5,7 @@
 # Return the sum of these numbers. The answer is guaranteed to fit in a 32-bits integer.
 from typing import Optional, List
 
-from bst.treenode import TreeNode
+from bst.tree_node import TreeNode
 
 
 def dsf(node: TreeNode, cur_path: str, sums: List):

@@ -3,14 +3,14 @@ import unittest
 from bst.convert_sorted_array_to_bst import sorted_array_to_bst
 from bst.diameter_of_tree import diameter_of_binary_tree_2, diameter_of_binary_tree
 from bst.find_good_node import count_good_nodes
-from bst.is_balanced import is_balanced
+from bst.is_balanced import is_balanced, check_balanced
 from bst.get_height import get_height
 from bst.is_same_tree import is_same_tree
 from bst.is_symmetric import is_symmetric
 from bst.path_sum import has_path_sum
 from bst.sum_path_binary import sum_root_to_leaf
 from bst.tree_path import binary_tree_paths
-from bst.treenode import TreeNode
+from bst.tree_node import TreeNode
 
 root1 = TreeNode(1)
 root1.left = TreeNode(2)
@@ -70,10 +70,22 @@ class TestBST(unittest.TestCase):
         root2.right = TreeNode(20)
         root2.right.left = TreeNode(15)
         root2.right.right = TreeNode(7)
+        root2.left.left = TreeNode(32)
+        root2.left.left = TreeNode(90)
         self.assertTrue(is_balanced(root2))
 
     def test_is_balanced_1(self):
         self.assertFalse(is_balanced(root1))
+
+    def test_is_balanced_3(self):
+        root2 = TreeNode(3)
+        root2.left = TreeNode(9)
+        root2.right = TreeNode(20)
+        root2.right.left = TreeNode(15)
+        root2.right.right = TreeNode(7)
+        root2.left.left = TreeNode(32)
+        root2.left.left = TreeNode(90)
+        self.assertTrue(check_balanced(root2))
 
     def test_has_path_sum(self):
         self.assertTrue(has_path_sum(root1, 3))

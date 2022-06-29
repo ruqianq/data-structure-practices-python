@@ -1,6 +1,6 @@
 # Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
 from typing import Optional
-from bst.treenode import TreeNode
+from bst.tree_node import TreeNode
 
 
 def is_mirror(node1, node2):

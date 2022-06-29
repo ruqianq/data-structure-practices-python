@@ -6,7 +6,7 @@
 from typing import Optional
 
 from bst.get_height import get_height
-from bst.treenode import TreeNode
+from bst.tree_node import TreeNode
 
 
 def diameter_of_binary_tree(root: Optional[TreeNode]) -> int:

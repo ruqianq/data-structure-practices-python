@@ -2,7 +2,7 @@
 # nodes in the tree.
 from typing import Optional, List
 
-from bst.treenode import TreeNode
+from bst.tree_node import TreeNode
 
 
 def min_diff_in_bst(root: Optional[TreeNode]) -> int:

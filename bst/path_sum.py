@@ -4,7 +4,7 @@
 # A leaf is a node with no children.
 from typing import Optional
 
-from bst.treenode import TreeNode
+from bst.tree_node import TreeNode
 
 
 def has_path_sum(root: Optional[TreeNode], target_sum: int) -> bool:

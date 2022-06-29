@@ -3,7 +3,7 @@
 # A leaf is a node with no children.
 from typing import Optional, List
 
-from bst.treenode import TreeNode
+from bst.tree_node import TreeNode
 
 
 def dfs(node: TreeNode, path, paths):

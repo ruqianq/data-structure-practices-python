@@ -2,7 +2,7 @@
 #
 # Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
 from typing import Optional
-from.treenode import TreeNode
+from.tree_node import TreeNode
 
 
 def is_same_tree(p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:

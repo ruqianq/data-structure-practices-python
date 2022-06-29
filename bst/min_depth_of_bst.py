@@ -5,7 +5,7 @@
 # Note: A leaf is a node with no children.
 from typing import Optional
 
-from bst.treenode import TreeNode
+from bst.tree_node import TreeNode
 
 
 def min_depth(root: Optional[TreeNode]) -> int:
