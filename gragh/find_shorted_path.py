@@ -7,20 +7,19 @@ from gragh.gragh import Graph
 from gragh.vertex import Vertex
 
 
-def check_route_between_vertex(graph: Graph, start_node: Vertex, end_node: Vertex) -> bool:
+def check_route_between_vertex(graph: Graph, start_node: int or str, end_node: int or str) -> bool:
     # Utilize queue in BFS
-    if graph.vertex_dict(start_node) is None or graph.vertex_dict(end_node) is None:
+    if graph.get_vertex(start_node) is None or graph.get_vertex(end_node) is None:
         return False
     q = deque()
-
     q.append(start_node)
     while len(q) != 0:
-        node: Vertex = q.popleft()
-        if node is not None:
-            for n in node.get_adjacent():
-                if n not in q:
-                    if n == end_node:
-                        return True
-                    else:
-                        q.append(n)
+        node: int or str = q.popleft()
+        cur_vertex: Vertex = graph.get_vertex(node)
+        for n in cur_vertex.get_adjacent():
+            if n.node not in q:
+                if n.node == end_node:
+                    return True
+                else:
+                    q.append(n.node)
     return False
