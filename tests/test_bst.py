@@ -113,6 +113,13 @@ class TestBST(unittest.TestCase):
     def test_diameter_of_binary_tree(self):
         self.assertEqual(diameter_of_binary_tree(root1), 4)
 
+    def test_sorted_array_to_bst(self):
+        sorted_array = [1, 3, 5, 7, 8, 9, 100]
+        bst = sorted_array_to_bst(sorted_array)
+        height = get_height(bst)
+        self.assertEqual(bst.value, 7)
+        self.assertEqual(height, 3)
+
 
 if __name__ == '__main__':
     unittest.main()

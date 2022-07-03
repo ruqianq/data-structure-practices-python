@@ -1,7 +1,10 @@
-# Given an integer array nums where the elements are sorted in ascending order, convert it to a height-balanced binary search tree.
+# Given an integer array nums where the elements are sorted in ascending order, convert it to a height-balanced
+# binary search tree.
 #
-# A height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.
+# A height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs
+# by more than one.
 #
+
 from typing import List, Optional
 from .tree_node import TreeNode
 
