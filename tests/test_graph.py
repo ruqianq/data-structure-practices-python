@@ -1,6 +1,6 @@
 import unittest
 
-from gragh.find_shorted_path import check_route_between_vertex
+from gragh.find_shorted_path import check_route_between_vertex, print_shortest_route
 from gragh.gragh import Graph
 
 g = Graph()
@@ -36,3 +36,6 @@ class TestGraph(unittest.TestCase):
 
     def test_check_route_between_vertex_when_node_is_not_included(self):
         self.assertFalse(check_route_between_vertex(g, 9, 6))
+
+    def test_print_shortest_route(self):
+        self.assertEqual(print_shortest_route(g, 1, 6), [1, 3, 6])

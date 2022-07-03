@@ -13,32 +13,28 @@ def check_route_between_vertex(graph: Graph, start_node: int or str, end_node: i
         return False
     q = deque()
     q.append(start_node)
-    while len(q) != 0:
+    while len(q) > 0:
         node: int or str = q.popleft()
         cur_vertex: Vertex = graph.get_vertex(node)
+        cur_vertex.visited = True
         for n in cur_vertex.get_adjacent():
-            if n.node not in q:
+            if not n.visited:
+                n.visited = True
+                q.append(n.node)
+                n.prev = cur_vertex
                 if n.node == end_node:
                     return True
-                else:
-                    q.append(n.node)
     return False
 
 
 def print_shortest_route(graph: Graph, start_node: int or str, end_node: int or str) -> list:
-    if graph.get_vertex(start_node) is None or graph.get_vertex(end_node) is None:
+    if check_route_between_vertex(graph, start_node, end_node) is False:
         return []
-    q = deque()
-    q.append(start_node)
-    visited: list = [start_node]
-    while len(q) != 0:
-        cur_node: int or str = q.popleft()
-        cur_vertex: Vertex = graph.get_vertex(cur_node)
-        for n in cur_vertex.get_adjacent():
-            if n.node not in q:
-                if n.node == end_node:
-                    visited.append(end_node)
-                    return visited
-                else:
-                    q.append(n.node)
-    return []
+    else:
+        node = graph.get_vertex(end_node)
+        route: list = []
+        while node:
+            route.append(node.node)
+            node = node.prev
+        route.reverse()
+        return route
