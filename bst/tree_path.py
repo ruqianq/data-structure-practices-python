@@ -19,23 +19,24 @@ def dfs(node: TreeNode, path: str, paths: list):
         dfs(node.right, path + '->', paths)
 
 
-def convert_node_to_linked_list_by_depth_dfs(node: TreeNode, depth) -> [LinkedList]:
+def convert_binary_tree_to_linked_list_by_depth_dfs(node: TreeNode, depth) -> [LinkedList]:
     if TreeNode is None:
         return []
 
     linked_list_arr = []
-    start_linked_list_node = LinkedList(node.value)
 
-    def helper(n: TreeNode, d):
+    def helper(n: TreeNode, linked_list, d):
+        start_linked_list_node = LinkedList(node.value)
         linked_list_arr.append(start_linked_list_node)
         d += 1
         if n.left and d <= depth:
             start_linked_list_node.next = n.left
-            helper(n.left, d)
+            helper(n.left, start_linked_list_node, d)
         if n.right and d <= depth:
             start_linked_list_node.next = n.right
-            helper(n.right, d)
-        helper(node, 0)
+            helper(n.right, start_linked_list_node, d)
+
+    helper(node, LinkedList(node), 0)
 
     return linked_list_arr
 
