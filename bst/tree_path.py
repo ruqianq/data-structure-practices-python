@@ -1,8 +1,6 @@
 # Given the root of a binary tree, return all root-to-leaf paths in any order.
 #
 # A leaf is a node with no children.
-from typing import Optional, List
-
 from bst.tree_node import TreeNode
 from link_list.linked_list import LinkedList
 
@@ -19,28 +17,26 @@ def dfs(node: TreeNode, path: str, paths: list):
         dfs(node.right, path + '->', paths)
 
 
-def convert_binary_tree_to_linked_list_by_depth_dfs(node: TreeNode, depth) -> [LinkedList]:
-    if node is None:
-        return []
-
-    linked_list_arr = []
-
-    def helper(n: TreeNode, linked_list, d):
+def to_linked_list_by_depth_dfs(node: TreeNode, depth: int, linked_list: LinkedList, linked_list_arr: list):
+    linked_list.append(node.value)
+    if linked_list.length == depth:
         linked_list_arr.append(linked_list)
-        d += 1
-        if n.left and d <= depth:
-            linked_list.append(n.left.value)
-            helper(n.left, linked_list, d)
-        if n.right and d <= depth:
-            linked_list.append(n.right.value)
-            helper(n.right, linked_list, d)
 
-    helper(node, LinkedList().append(node.value), 0)
+    if node.left and linked_list.length <= depth:
+        to_linked_list_by_depth_dfs(node.left, depth, linked_list, linked_list_arr)
+    if node.right and linked_list.length <= depth:
+        to_linked_list_by_depth_dfs(node.right, depth, linked_list, linked_list_arr)
 
+
+def convert_binary_tree_to_linked_list_by_depth_dfs(root: TreeNode, depth: int) -> list:
+    linked_list_arr = []
+    if not root:
+        return linked_list_arr
+    to_linked_list_by_depth_dfs(root, depth, LinkedList(), linked_list_arr)
     return linked_list_arr
 
 
-def binary_tree_paths(root: Optional[TreeNode]) -> List[str]:
+def binary_tree_paths(root: TreeNode) -> list:
     paths = []
     if not root:
         return paths

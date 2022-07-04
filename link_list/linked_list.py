@@ -7,6 +7,7 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head: Node or None = None
+        self.length = 0
 
     def append(self, value):
         new_node = Node(value)
@@ -16,5 +17,6 @@ class LinkedList:
         cur_node = self.head
         while cur_node.next:
             cur_node = cur_node.next
+            self.length += 1
         cur_node.next = new_node
         return self

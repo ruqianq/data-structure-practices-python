@@ -95,13 +95,15 @@ class TestBST(unittest.TestCase):
         root0 = TreeNode(1)
         root0.left = TreeNode(2)
         root0.left.right = TreeNode(5)
+        root0.left.right.right = TreeNode(6)
         root0.right = TreeNode(3)
-        self.assertEqual(binary_tree_paths(root0), ['1->2->5', '1->3'])
+        self.assertEqual(binary_tree_paths(root0), ['1->2->5->6', '1->3'])
 
     def test_convert_binary_tree_to_linked_list_by_depth_dfs(self):
         root0 = TreeNode(1)
         root0.left = TreeNode(2)
         root0.left.right = TreeNode(5)
+        root0.left.right.right = TreeNode(6)
         root0.right = TreeNode(3)
 
         linked_list0 = LinkedList().append(1)
@@ -109,13 +111,18 @@ class TestBST(unittest.TestCase):
         linked_list1 = LinkedList().append(1)
         linked_list1.append(2)
         linked_list1.append(5)
+        linked_list1.append(6)
 
         linked_list2 = LinkedList().append(1)
         linked_list2 .append(3)
 
         expected_arr = [linked_list0, linked_list1, linked_list2]
         test_arr = convert_binary_tree_to_linked_list_by_depth_dfs(root0, 1)
-        self.assertEqual(test_arr, expected_arr)
+        self.assertEqual(test_arr[0].head.head, expected_arr[0].head.head)
+        self.assertEqual(test_arr[2].head.next.head, expected_arr[2].head.next.head)
+
+        test_arr2 = convert_binary_tree_to_linked_list_by_depth_dfs(root0, 2)
+        self.assertEqual(test_arr[0].head.head, expected_arr[0].head.head)
 
     def test_sum_root_to_leaf(self):
         root0 = TreeNode(1)
