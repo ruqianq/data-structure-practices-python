@@ -104,14 +104,15 @@ class TestBST(unittest.TestCase):
         root0.left.right = TreeNode(5)
         root0.right = TreeNode(3)
 
-        linked_list0 = LinkedList(1)
+        linked_list0 = LinkedList().append(1)
 
-        linked_list1 = LinkedList(1)
-        linked_list1.insert(2)
-        linked_list1.insert(5)
+        linked_list1 = LinkedList().append(1)
+        linked_list1.append(2)
+        linked_list1.append(5)
 
-        linked_list2 = LinkedList(1)
-        linked_list2.insert(3)
+        linked_list2 = LinkedList().append(1)
+        linked_list2 .append(3)
+
         expected_arr = [linked_list0, linked_list1, linked_list2]
         test_arr = convert_binary_tree_to_linked_list_by_depth_dfs(root0, 1)
         self.assertEqual(test_arr, expected_arr)
