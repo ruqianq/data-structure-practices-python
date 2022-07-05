@@ -17,22 +17,23 @@ def dfs(node: TreeNode, path: str, paths: list):
         dfs(node.right, path + '->', paths)
 
 
-def to_linked_list_by_depth_dfs(node: TreeNode, depth: int, linked_list: LinkedList, linked_list_arr: list):
-    linked_list.append(node.value)
-    if linked_list.length == depth:
+def to_linked_list_by_depth_dfs(node: TreeNode, depth: int, linked_list_arr: list):
+    if node is None:
+        return
+    linked_list = LinkedList()
+    if len(linked_list_arr) == depth:
         linked_list_arr.append(linked_list)
+    else:
+        linked_list = linked_list_arr[depth]
+    linked_list.append(node.value)
+    to_linked_list_by_depth_dfs(node.left, depth + 1, linked_list_arr)
+    to_linked_list_by_depth_dfs(node.right, depth + 1, linked_list_arr)
 
-    if node.left and linked_list.length <= depth:
-        to_linked_list_by_depth_dfs(node.left, depth, linked_list, linked_list_arr)
-    if node.right and linked_list.length <= depth:
-        to_linked_list_by_depth_dfs(node.right, depth, linked_list, linked_list_arr)
 
-
-def convert_binary_tree_to_linked_list_by_depth_dfs(root: TreeNode, depth: int) -> list:
+def convert_binary_tree_to_linked_list_by_depth_dfs(root: TreeNode) -> list:
     linked_list_arr = []
-    if not root:
-        return linked_list_arr
-    to_linked_list_by_depth_dfs(root, depth, LinkedList(), linked_list_arr)
+
+    to_linked_list_by_depth_dfs(root, 0, linked_list_arr)
     return linked_list_arr
 
 
