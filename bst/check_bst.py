@@ -2,7 +2,7 @@
 from bst.tree_node import TreeNode
 
 
-def check_bst(tree: TreeNode) -> bool:
+def check_bst(root: TreeNode) -> bool:
     def helper(node: TreeNode, min_value: int or None, max_value: int or None) -> bool:
         if node is None:
             return True
@@ -11,4 +11,4 @@ def check_bst(tree: TreeNode) -> bool:
         if not helper(node.left, min_value, node.value) or not helper(node.right, node.value, max_value):
             return False
         return True
-    return helper(tree, None, None)
+    return helper(root, None, None)
