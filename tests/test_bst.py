@@ -1,5 +1,6 @@
 import unittest
 
+from bst.check_bst import check_bst
 from bst.convert_sorted_array_to_bst import sorted_array_to_bst
 from bst.diameter_of_tree import diameter_of_binary_tree_2, diameter_of_binary_tree
 from bst.find_good_node import count_good_nodes
@@ -143,6 +144,24 @@ class TestBST(unittest.TestCase):
         height = get_height(bst)
         self.assertEqual(bst.value, 7)
         self.assertEqual(height, 3)
+
+    def test_check_bst_when_it_is_a_bst(self):
+        root0 = TreeNode(11)
+        root0.left = TreeNode(9)
+        root0.left.left = TreeNode(8)
+        root0.left.right = TreeNode(10)
+        root0.right = TreeNode(12)
+        root0.right.right = TreeNode(15)
+        self.assertTrue(check_bst(root0))
+
+    def test_check_bst_when_it_is_not_a_bst(self):
+        root0 = TreeNode(11)
+        root0.left = TreeNode(9)
+        root0.left.left = TreeNode(8)
+        root0.left.right = TreeNode(10)
+        root0.right = TreeNode(12)
+        root0.right.right = TreeNode(10)
+        self.assertFalse(check_bst(root0))
 
 
 if __name__ == '__main__':
