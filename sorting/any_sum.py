@@ -49,3 +49,47 @@ arr is not necessarily sorted
                 right -= 1
 
     return result
+
+
+def four_sum(arr, target):
+    """
+    Given a list of numbers, find all the unique quadruples that sum up to a given target value.
+Two quadruples are considered different if there exists a number whose frequencies differ in those two quadruples.
+The quadruples can be returned in any order.
+The order of numbers inside any quadruple does not matter.
+    Args:
+     arr(list_int32)
+     target(int32)
+     {
+"arr": [0, 0, 1, 3, 2, -1],
+"target": 3
+}
+    Returns:
+     list_list_int32
+    """
+    arr.sort()
+    result = []
+    n = len(arr)
+    for num1 in range(n - 3):
+        if arr[num1] == arr[num1-1] and num1 > 0:
+            continue
+        for num2 in range(num1 + 1, n - 2):
+            if num2 > num1 + 1 and arr[num2] == arr[num2-1]:
+                continue
+            left = num2 + 1
+            right = n - 1
+            while left < right:
+                if arr[num1] + arr[num2] + arr[left] + arr[right] == target:
+                    result.append([arr[num1], arr[num2], arr[left], arr[right]])
+                    while left < right and arr[left] == arr[left+1]:
+                        left += 1
+                    while left < right and arr[right] == arr[right-1]:
+                        right -= 1
+                    left += 1
+                    right -= 1
+                elif arr[num1] + arr[num2] + arr[left] + arr[right] < target:
+                    left += 1
+                else:
+                    right -= 1
+
+    return result
