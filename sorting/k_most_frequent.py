@@ -29,4 +29,4 @@ Return the answer sorted by the frequency from highest to lowest. Sort the words
             hash_table[word] = 1
     hash_table = dict(sorted(hash_table.items(), key=lambda item: item[0], reverse=True))
     return list(hash_table.keys())[:k]
- 
+
