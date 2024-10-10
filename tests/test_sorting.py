@@ -1,5 +1,6 @@
 import unittest
 from sorting.segregate_evens_and_odds import segregate_evens_and_odds
+from sorting.merge_one_into_another import merge_one_into_another
 
 class TestSegregateEvensAndOdds(unittest.TestCase):
 
@@ -27,6 +28,12 @@ class TestSegregateEvensAndOdds(unittest.TestCase):
         numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         expected_result = [8, 2, 6, 4, 5, 3, 7, 1, 9]
         self.assertEqual(segregate_evens_and_odds(numbers), expected_result)
+    
+    def test_merge_one_into_another(self):
+        first = [1, 3, 5]
+        second = [2, 4, 6, 0, 0, 0]
+        expected_result = [1, 2, 3, 4, 5, 6]
+        self.assertEqual(merge_one_into_another(first, second), expected_result)
 
 if __name__ == '__main__':
     unittest.main()
