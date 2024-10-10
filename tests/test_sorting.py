@@ -1,6 +1,8 @@
 import unittest
 from sorting.segregate_evens_and_odds import segregate_evens_and_odds
 from sorting.merge_one_into_another import merge_one_into_another
+from sorting.k_most_frequent import find_top_k_frequent_elements
+
 
 class TestSegregateEvensAndOdds(unittest.TestCase):
 
@@ -34,6 +36,14 @@ class TestSegregateEvensAndOdds(unittest.TestCase):
         second = [2, 4, 6, 0, 0, 0]
         expected_result = [1, 2, 3, 4, 5, 6]
         self.assertEqual(merge_one_into_another(first, second), expected_result)
+
+    def test_find_top_k_frequent_elements(self):
+        arr = [1, 2, 3, 2, 4, 3, 1]
+        k = 2
+        expected_result = [[3, 1], [1, 3],[2, 1], [1, 2], [2, 3], [3, 2]]
+        result = find_top_k_frequent_elements(arr, k)
+        self.assertTrue(result in expected_result)
+
 
 if __name__ == '__main__':
     unittest.main()

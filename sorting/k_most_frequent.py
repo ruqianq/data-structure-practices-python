@@ -1,3 +1,6 @@
+import heapq
+from collections import Counter
+
 
 def k_most_frequent(k, words):
     """
@@ -29,4 +32,41 @@ Return the answer sorted by the frequency from highest to lowest. Sort the words
             hash_table[word] = 1
     hash_table = dict(sorted(hash_table.items(), key=lambda item: item[0], reverse=True))
     return list(hash_table.keys())[:k]
+
+
+def find_top_k_frequent_elements(arr, k):
+    """
+    Given an integer array and a number k, find the k most frequent elements in the array.
+
+    Args:
+     arr(list_int32)
+     k(int32)
+     {
+"arr": [1, 2, 3, 2, 4, 3, 1],
+"k": 2
+}
+
+[3, 1]
+
+    Returns:
+     list_int32
+    """
+    # Write your code here.
+
+    # build the hash table
+    counts = Counter(arr)
+
+    # build the heap
+    heap = []
+
+    for element, freq in counts.items():
+            # 3: Manage the heap
+            # Add each element to the heap
+        heapq.heappush(heap, (freq, element))
+            # If the size of the heap is larger than k, we pop the element at the top. 
+        if len(heap) > k:
+            heapq.heappop(heap)
+        
+        # 4: What remains in the heap are the top k most frequent
+    return [num for (count, num) in heap]
 
