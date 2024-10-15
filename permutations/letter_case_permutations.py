@@ -71,6 +71,7 @@ def letter_case_permutations_mutable(s):
 # Instead of creating a new string slate at every step in the recursion, you can modify the string in-place using a list. This avoids building new strings on every recursive call. Additionally, you can avoid storing all permutations at once by yielding results one at a time using a generator.
 # This approach reduces auxiliary space by removing the need for constructing new strings at each recursive level and eliminates the need to store all results in memory simultaneously.
 # Here’s how you could implement it:
+# this is often can do with permutations problem, but not in combination problem.
 
 def letter_case_permutations_mutation_2(s):
     """
