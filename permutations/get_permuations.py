@@ -5,19 +5,23 @@ def get_permutations_unique(arr):
     Returns:
      list_list_int32
     """
-    # Write your code here.
-    r=[]
-    def permutations(s,n):
-        if len(n)==0:
-            r.append(s[:])
+    # Store the result list
+    result = []
+    
+    def permutations_helper(current_permutation, remaining_elements):
+        if len(remaining_elements) == 0:
+            result.append(current_permutation[:])
             return
         else:
-            for i in range(0,len(n)):
-                s.append(n[i])
-                permutations(s,n[:i]+n[i+1:])
-                s.pop()
-    permutations([],arr)    
-    return r
+            for i in range(0, len(remaining_elements)): # only have n - i choice to choose for each worker
+                current_permutation.append(remaining_elements[i])
+                permutations_helper(current_permutation, remaining_elements[:i] + remaining_elements[i+1:])
+                #backtrack, resume current_permuation to the previous state
+                current_permutation.pop()
+    
+    permutations_helper([], arr)
+    
+    return result
 
 
 def get_permutations_unique_swap(arr):
@@ -38,11 +42,11 @@ def get_permutations_unique_swap(arr):
         else:
             # Iterate over the remaining elements to generate permutations
             for j in range(i, len(arr)):
-                # Swap to fix the current element
+                # Swap to fix the current element, because we need to fill the left-most black of subproblem
                 arr[i], arr[j] = arr[j], arr[i]
                 # Recurse for the next position
                 helper(i+1)
-                # Backtrack by swapping the elements back
+                # Backtrack by swapping the elements back, whatever we swap we need to unswap it
                 arr[i], arr[j] = arr[j], arr[i]
 
     # Start the recursion from index 0

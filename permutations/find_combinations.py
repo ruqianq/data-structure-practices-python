@@ -1,4 +1,4 @@
-from itertools import combinations
+# this is also called subset generation
 
 def find_combinations(n, k):
     """
@@ -35,6 +35,9 @@ def find_combinations_mutable(n, k):
      list_list_int32
     """
     # Write your code here.
+    # subproblem: the array and the index to make the decision on
+    # partial solution: the current permutation
+    # the size of the subproblem has to be reduce otherwise it would go into infinte loop
     result = [] 
     slate = []
     def helper(i):
