@@ -62,3 +62,10 @@ def delete_from_bst(root: TreeNode, values_to_be_deleted: list):
         
             
     return root
+
+# would sorting helps?
+# BST Deletion Process: The deletion process in a binary search tree (BST) involves:
+
+#Searching for the node to delete.
+#Rearranging the tree based on the node's children.
+#These operations are independent of the order in which you delete the nodes. Each deletion is handled in isolation, meaning deleting nodes in sorted order won't affect the time it takes to search for and delete individual nodes.
