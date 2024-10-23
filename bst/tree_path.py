@@ -45,3 +45,45 @@ def binary_tree_paths(root: TreeNode) -> list:
     dfs(root, '', paths)
 
     return paths
+
+
+"""
+with mutable slate
+For your reference:
+class BinaryTreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+"""
+def all_paths_of_a_binary_tree(root):
+    """
+    Args:
+     root(BinaryTreeNode_int32)
+    Returns:
+     list_list_int32
+    """
+    # Write your code here.
+    # Algo: DSF, recurssive, top - buttom, pre-order
+    # Trade off: unbalance tree O(n)
+    # edge case: empty tree
+    result = []
+    if not root: return []
+    def helper(node, slate):
+        
+        
+        if not node.left and not node.right:
+            result.append(slate[:])
+        
+        if node.left:
+            slate.append(node.left.value)
+            helper(node.left, slate)
+            slate.pop()
+
+        if node.right:
+            slate.append(node.right.value)
+            helper(node.right, slate)
+            slate.pop()
+
+    helper(root, [root.value])
+    return result
