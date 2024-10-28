@@ -19,9 +19,9 @@ def merge_k_lists(lists):
     heapq.heapify(heap)
     
     for i in range(len(lists)):
-        if lists[i] is not None:
+        if lists[i]:
             node = lists[i]
-            while node is not None:
+            while node:
                 heapq.heappush(heap, node.value)
                 node = node.next
     
