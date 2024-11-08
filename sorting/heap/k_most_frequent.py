@@ -70,3 +70,47 @@ def find_top_k_frequent_elements(arr, k):
         # 4: What remains in the heap are the top k most frequent
     return [num for (count, num) in heap]
 
+from typing import List
+from collections import Counter
+import random
+
+class Solution:
+
+    def three_way_partition(self, arr, left, right, pivot_value):
+        i = left
+        while i <= right:
+            if arr[i][1] > pivot_value:  # Note: we want most frequent, so `>` here
+                arr[i], arr[left] = arr[left], arr[i]
+                left += 1
+                i += 1
+            elif arr[i][1] < pivot_value:
+                arr[i], arr[right] = arr[right], arr[i]
+                right -= 1
+            else:
+                i += 1
+        return left, right
+    
+    def quick_select(self, arr, left, right, k):
+        if left == right:
+            return [x[0] for x in arr[:k]]
+        
+        pivot_index = random.randint(left, right)
+        pivot_value = arr[pivot_index][1]
+        
+        lt, gt = self.three_way_partition(arr, left, right, pivot_value)
+
+        if lt <= k - 1 <= gt:
+            return [x[0] for x in arr[:k]]
+        elif k - 1 < lt:
+            return self.quick_select(arr, left, lt - 1, k)
+        else:
+            return self.quick_select(arr, gt + 1, right, k)
+
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        # Count the frequency of each element
+        frequency = Counter(nums)
+        # Convert to a list of (element, frequency) pairs
+        freq_list = list(frequency.items())
+        
+        # Use Quickselect to find the top k frequent elements
+        return self.quick_select(freq_list, 0, len(freq_list) - 1, k)
