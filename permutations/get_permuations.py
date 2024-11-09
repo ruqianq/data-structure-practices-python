@@ -53,3 +53,31 @@ def get_permutations_unique_swap(arr):
     helper(0)
     
     return result    
+
+
+def get_permutations_with_set(arr):
+    """
+    Args:
+     arr(list_int32)
+    Returns:
+     list_list_int32
+    """
+    arr.sort()
+    res = [] 
+
+    def helper(arr, i): #[1,2,2] 
+        if i == len(arr)-1:
+            res.append(arr[:])
+            return 
+        visited = set() 
+        for j in range(i, len(arr)): # pick 2:  [1,2] -> [2,1,2], [2,2,1] or #[2,1]-> [2,2,1], [2,1,2]
+            if arr[j] in visited: 
+                continue 
+            visited.add(arr[j])
+            arr[i], arr[j] = arr[j], arr[i] 
+            helper(arr, i+1) 
+            arr[i], arr[j] = arr[j], arr[i]
+        
+        
+    helper(arr, 0)
+    return res
