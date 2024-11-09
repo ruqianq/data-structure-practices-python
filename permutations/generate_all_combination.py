@@ -1,4 +1,5 @@
 
+
 def generate_all_combinations(arr, target):
     """
     Args:
